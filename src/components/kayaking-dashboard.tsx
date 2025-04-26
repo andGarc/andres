@@ -133,9 +133,18 @@ export function KayakingDashboard({ data }: KayakingDashboardProps) {
                 text: `Kayaking Days${selectedYear !== "All" ? ` (${selectedYear})` : ""}`,
                 font: { family: "monospace", size: 16, color: "white" },
               },
-              xaxis: { title: "Month", tickfont: { color: "white" }, gridcolor: "rgba(255,255,255,0.1)" },
+              xaxis: { title: "", tickfont: { color: "white" }, gridcolor: "rgba(255,255,255,0.1)" },
               yaxis: { title: "Days", tickfont: { color: "white" }, gridcolor: "rgba(255,255,255,0.1)" },
-              legend: { font: { color: "white" }, bgcolor: "rgba(30,38,64,0.7)", bordercolor: "rgba(255,255,255,0.2)", borderwidth: 1 },
+              legend: {
+                orientation: "h",
+                y: -0.2,
+                x: 0.5,
+                xanchor: "center",
+                font: { color: "white" },
+                bgcolor: "rgba(30,38,64,0.7)",
+                bordercolor: "rgba(255,255,255,0.2)",
+                borderwidth: 1,
+              },
             }}
             config={{ responsive: true, displayModeBar: false }}
             style={{ width: "100%", height: "100%" }}
