@@ -6,7 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { Select } from "@/components/ui/select"
 import { SelectItem, SelectTrigger, SelectContent, SelectValue } from "@/components/ui/select"
 
-const Plot = dynamic(() => import("react-plotly.js"), {
+const Plot =  dynamic(() => import("react-plotly.js"), {
   ssr: false,
   loading: () => <Skeleton className="w-full h-[300px]" />,
 })
@@ -14,7 +14,7 @@ const Plot = dynamic(() => import("react-plotly.js"), {
 interface KayakingData {
   date: string
   level: number
-  notes: string
+  notes: string | null
   river: string
   level_type: string
 }

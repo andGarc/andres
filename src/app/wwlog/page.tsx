@@ -35,7 +35,7 @@ export default function WhitewaterLogPage() {
           return
         }
         
-        setKayakingData(data)
+        setKayakingData(data as KayakingLog[])
       } catch (error) {
         console.error("Unexpected error:", error)
       } finally {
