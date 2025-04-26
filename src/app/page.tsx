@@ -121,7 +121,7 @@ export default function Portfolio() {
               </div>
 
               <div className="relative overflow-x-auto pb-4 -mx-2">
-                <div className="absolute left-0 right-0 top-1/4 transform -translate-y-1/2 h-[2px] bg-blue-400 bg-opacity-50"></div>
+              <div className="hidden md:block absolute left-0 right-0 top-1/4 transform -translate-y-1/2 h-[2px] bg-blue-400 bg-opacity-50"></div>
                 <div className="flex space-x-8 px-2">
                   {[
                     { year: "2012 - 2016", label: "USMC" },
