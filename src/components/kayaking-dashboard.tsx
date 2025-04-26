@@ -25,8 +25,8 @@ interface KayakingDashboardProps {
 
 export function KayakingDashboard({ data }: KayakingDashboardProps) {
   const [totalDays, setTotalDays] = useState(0)
-  const [plotData, setPlotData] = useState<any[]>([])
-  const [plotLayout, setPlotLayout] = useState<any>({})
+  const [plotData, setPlotData] = useState<unknown[]>([])
+  const [plotLayout, setPlotLayout] = useState<unknown>({})
   const [uniqueRivers, setUniqueRivers] = useState<string[]>([])
   const [riverStats, setRiverStats] = useState<{ [key: string]: number }>({})
   const [selectedYear, setSelectedYear] = useState<string>("All")

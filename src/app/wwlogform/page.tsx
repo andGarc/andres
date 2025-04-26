@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { createClient } from "@supabase/supabase-js"
 import { Button } from "@/components/ui/button"
-import { KayakingDashboard } from "@/components/kayaking-dashboard"
 
 // Initialize Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -18,8 +17,7 @@ export default function WhitewaterLogFormPage() {
   const [measurementUnit, setMeasurementUnit] = useState("FT")
   const [notes, setNotes] = useState("")
   const [kayakingData, setKayakingData] = useState([])
-  const [loading, setLoading] = useState(true)
-
+``
   // Set default date to today on initial load
   useEffect(() => {
     const today = new Date()
