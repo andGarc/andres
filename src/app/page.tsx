@@ -84,7 +84,7 @@ export default function Portfolio() {
             </div>
 
             {/* Projects Section */}
-            <section>
+            <section className="sm:px-2">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-xl md:text-2xl font-mono">My Projects</h2>
                 <Button variant="ghost" size="icon" asChild>
@@ -93,14 +93,14 @@ export default function Portfolio() {
                   </Link>
                 </Button>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {projects.map((project, i) => (
                   <div
                     key={i}
-                    className="relative bg-gray-900 rounded-lg p-4 aspect-[4/3] flex flex-col justify-end hover:scale-105 transition-transform cursor-pointer"
+                    className="relative bg-gray-900 rounded-lg p-2 aspect-[5/4] flex flex-col justify-end hover:scale-105 transition-transform cursor-pointer"
                     onClick={() => openProjectModal(project)}
                   >
-                    <div>
+                    <div className="text-right">
                       <h3 className="text-white font-bold text-base">{project.title}</h3>
                       <p className="text-blue-400 text-xs">{project.subtitle}</p>
                     </div>
