@@ -1,0 +1,6 @@
+/* Custom styles for the whitewater log page */
+.radio-blue:checked {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+  }
+  
