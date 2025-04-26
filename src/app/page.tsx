@@ -71,18 +71,6 @@ export default function Portfolio() {
 
           {/* Right Content */}
           <main className="flex flex-col space-y-8">
-            {/* Mobile menu */}
-            <div className="flex justify-end lg:hidden gap-2">
-              <Button variant="ghost" size="icon">
-                <Menu className="w-6 h-6" />
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link href="/timeline">
-                  →
-                </Link>
-              </Button>
-            </div>
-
             {/* Projects Section */}
             <section className="sm:px-2">
               <div className="flex justify-between items-center mb-4">
