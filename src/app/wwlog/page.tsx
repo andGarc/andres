@@ -5,14 +5,19 @@ import Link from "next/link"
 import { createClient } from "@supabase/supabase-js"
 import { Button } from "@/components/ui/button"
 import { KayakingDashboard } from "@/components/kayaking-dashboard"
+import { Database } from "@/lib/database-types"
 
 // Initialize Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-const supabase = createClient(supabaseUrl, supabaseAnonKey)
+const supabase = createClient(supabaseUrl!, supabaseAnonKey!)
+
+type KayakingLog = Database["public"]["Tables"]["wwlog"]["Row"]
+
 
 export default function WhitewaterLogPage() {
-  const [kayakingData, setKayakingData] = useState([])
+  const [kayakingData, setKayakingData] = useState<KayakingLog[]>([])
+
   const [loading, setLoading] = useState(true)
 
   // Fetch kayaking data from Supabase

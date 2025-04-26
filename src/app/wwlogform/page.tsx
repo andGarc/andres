@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, FormEvent } from "react"
 import Link from "next/link"
 import { createClient } from "@supabase/supabase-js"
 import { Button } from "@/components/ui/button"
@@ -8,16 +8,25 @@ import { Button } from "@/components/ui/button"
 // Initialize Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-const supabase = createClient(supabaseUrl, supabaseAnonKey)
+const supabase = createClient(supabaseUrl!, supabaseAnonKey!)
+
+interface KayakingLog {
+  id: number
+  date: string
+  river: string
+  level: number
+  level_type: string
+  notes: string
+}
 
 export default function WhitewaterLogFormPage() {
   const [date, setDate] = useState("")
   const [riverSection, setRiverSection] = useState("Little Falls")
   const [level, setLevel] = useState("0.00")
-  const [measurementUnit, setMeasurementUnit] = useState("FT")
+  const [measurementUnit, setMeasurementUnit] = useState<"FT" | "CFS">("FT")
   const [notes, setNotes] = useState("")
-  const [kayakingData, setKayakingData] = useState([])
-``
+  const [kayakingData, setKayakingData] = useState<KayakingLog[]>([])
+
   // Set default date to today on initial load
   useEffect(() => {
     const today = new Date()
@@ -25,41 +34,43 @@ export default function WhitewaterLogFormPage() {
     setDate(formattedDate)
   }, [])
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    
+
     try {
       // Convert level to number
       const levelValue = parseFloat(level)
-      
+
       // Insert new entry into Supabase
       const { data, error } = await supabase
         .from('wwlog')
         .insert([
-          { 
-            date, 
-            river: riverSection, 
-            level: levelValue, 
-            level_type: measurementUnit, 
-            notes 
+          {
+            date,
+            river: riverSection,
+            level: levelValue,
+            level_type: measurementUnit,
+            notes
           }
         ])
         .select()
-      
+
       if (error) {
         console.error("Error adding log entry:", error)
         alert("Failed to submit log entry: " + error.message)
         return
       }
-      
-      // Add the new entry to the local state
-      setKayakingData([data[0], ...kayakingData])
-      
-      // Reset form fields except date
-      setNotes("")
-      setLevel("0.00")
-      
-      alert("Log entry submitted successfully!")
+
+      if (data) {
+        // Add the new entry to the local state
+        setKayakingData([data[0], ...kayakingData])
+
+        // Reset form fields except date
+        setNotes("")
+        setLevel("0.00")
+
+        alert("Log entry submitted successfully!")
+      }
     } catch (error) {
       console.error("Unexpected error:", error)
       alert("An unexpected error occurred")
@@ -81,7 +92,7 @@ export default function WhitewaterLogFormPage() {
         {/* Back to Portfolio Button */}
         <div className="mb-8">
           <Button variant="outline" className="text-black border-gray-500" asChild>
-          <Link href="/">← Back</Link>
+            <Link href="/">← Back</Link>
           </Button>
         </div>
 
@@ -106,7 +117,7 @@ export default function WhitewaterLogFormPage() {
 
             {/* River Section */}
             <div>
-              <h3 className="text-lg">River Section Drop Down</h3>
+              <h3 className="text-lg">River Section</h3>
               <select
                 value={riverSection}
                 onChange={(e) => setRiverSection(e.target.value)}
@@ -123,7 +134,7 @@ export default function WhitewaterLogFormPage() {
 
             {/* Level */}
             <div>
-              <h3 className="text-lg">Level Decimal Input</h3>
+              <h3 className="text-lg">Level (decimal)</h3>
               <input
                 type="number"
                 step="0.01"
@@ -134,9 +145,9 @@ export default function WhitewaterLogFormPage() {
               />
             </div>
 
-            {/* FT or CFS */}
+            {/* Measurement Unit */}
             <div>
-              <h3 className="text-lg">Drop down cfs vs ft</h3>
+              <h3 className="text-lg">Measurement Unit</h3>
               <div className="flex gap-6 mt-2">
                 <div className="flex items-center space-x-2">
                   <input
@@ -148,9 +159,7 @@ export default function WhitewaterLogFormPage() {
                     onChange={() => setMeasurementUnit("FT")}
                     className="h-5 w-5"
                   />
-                  <label htmlFor="ft" className="text-lg">
-                    FT
-                  </label>
+                  <label htmlFor="ft" className="text-lg">FT</label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <input
@@ -162,9 +171,7 @@ export default function WhitewaterLogFormPage() {
                     onChange={() => setMeasurementUnit("CFS")}
                     className="h-5 w-5"
                   />
-                  <label htmlFor="cfs" className="text-lg">
-                    CFS
-                  </label>
+                  <label htmlFor="cfs" className="text-lg">CFS</label>
                 </div>
               </div>
             </div>
