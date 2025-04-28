@@ -26,6 +26,7 @@ export function KayakingDashboard({ data }: KayakingDashboardProps) {
   const [totalDays, setTotalDays] = useState(0)
   const [rivers, setRivers] = useState<string[]>([])
   const [riverStats, setRiverStats] = useState<Record<string, number>>({})
+  const [monthlyTotals, setMonthlyTotals] = useState<number[]>([])
   const [isClient, setIsClient] = useState(false)
 
   useEffect(() => setIsClient(true), [])
@@ -74,12 +75,13 @@ export function KayakingDashboard({ data }: KayakingDashboardProps) {
       marker: { color: colors[river] || "#ef4444" },
     }))
 
-    const monthlyTotals = monthNames.map((_, i) => sortedRivers.reduce((sum, r) => sum + (riverCounts[r][i] || 0), 0))
+    const monthlyTotalsArray = monthNames.map((_, i) => sortedRivers.reduce((sum, r) => sum + (riverCounts[r][i] || 0), 0))
+    setMonthlyTotals(monthlyTotalsArray)
 
     const totalsTrace = {
       x: monthNames,
-      y: monthlyTotals,
-      text: monthlyTotals.map(String),
+      y: monthlyTotalsArray,
+      text: monthlyTotalsArray.map(String),
       mode: "text" as const,
       textposition: "top center",
       showlegend: false,
@@ -127,14 +129,20 @@ export function KayakingDashboard({ data }: KayakingDashboardProps) {
               autosize: true,
               paper_bgcolor: "rgba(0,0,0,0)",
               plot_bgcolor: "rgba(0,0,0,0)",
-              margin: { l: 50, r: 20, t: 50, b: 50 },
+              margin: { l: 50, r: 20, t: 80, b: 50 },
               showlegend: true,
               title: {
                 text: `Kayaking Days${selectedYear !== "All" ? ` (${selectedYear})` : ""}`,
                 font: { family: "monospace", size: 16, color: "white" },
               },
               xaxis: { title: "", tickfont: { color: "white" }, gridcolor: "rgba(255,255,255,0.1)" },
-              yaxis: { title: "Days", tickfont: { color: "white" }, gridcolor: "rgba(255,255,255,0.1)" },
+              yaxis: {
+                title: "Days",
+                tickfont: { color: "white" },
+                gridcolor: "rgba(255,255,255,0.1)",
+                rangemode: "tozero",
+                range: [0, Math.max(...monthlyTotals) * 1.15],
+              },
               legend: {
                 orientation: "h",
                 y: -0.2,
