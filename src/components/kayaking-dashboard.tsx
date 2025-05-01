@@ -105,7 +105,7 @@ export function KayakingDashboard({ data }: KayakingDashboardProps) {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <p className="text-gray-400">
+        <p className="text-white">
           Total days {selectedYear !== "All" ? `in ${selectedYear}` : "logged"}: <span className="text-white font-bold">{totalDays}</span>
         </p>
         <Select onValueChange={setSelectedYear} value={selectedYear}>

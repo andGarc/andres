@@ -134,7 +134,7 @@ export default function WhitewaterLogFormPage() {
 
             {/* Level */}
             <div>
-              <h3 className="text-lg">Level (decimal)</h3>
+              <h3 className="text-lg">Level</h3>
               <input
                 type="number"
                 step="0.01"
