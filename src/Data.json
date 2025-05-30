@@ -123,6 +123,18 @@
             "technologies": ["R", "Shiny", "Mapbox", "Tile API", "AWS EC2"],
             "img_src":"/projects/project1.jpg",
             "img_alt":"test"
+        },
+        {
+            "id": 4,
+            "title": "Vermont Law School Laundry Tracker",
+            "subtitle": "",
+            "category": "App",
+            "description": "Real-time coordination system for shared laundry machines in multi-unit buildings, eliminating the hassle of checking availability and preventing forgotten loads.",
+            "long_description": "Real-time coordination system for shared laundry machines in multi-unit buildings, eliminating the hassle of checking availability and preventing forgotten loads.",
+            "link": "https://github.com/andGarc/laundry-tracker",
+            "technologies": ["React", "Supabase", "TailwindCSS"],
+            "img_src":"/projects/project1.jpg",
+            "img_alt":"test"
         }
     ]
 }
