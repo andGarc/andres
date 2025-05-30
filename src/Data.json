@@ -116,7 +116,7 @@
             "id": 3,
             "title": "em.map",
             "subtitle": "",
-            "category": "DE",
+            "category": "GIS",
             "description": "Real-time tracking application celebrating Em's 365 days of running, featuring live location feeds and custom mapping visualization.",
             "long_description": "Real-time tracking application celebrating Em's 365 days of running, featuring live location feeds and custom mapping visualization.",
             "link": "https://github.com/andGarc/em_map/blob/main/README.md",
