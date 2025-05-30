@@ -75,11 +75,11 @@ export default function Portfolio() {
             <section className="bg-gray-900 rounded-xl p-4">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl md:text-2xl font-mono">My Projects</h2>
-                <Button variant="ghost" size="icon" asChild>
+                {/* <Button variant="ghost" size="icon" asChild>
                   <Link href="#">
                     →
                   </Link>
-                </Button>
+                </Button> */}
               </div>
               <div className="relative overflow-x-auto pb-4 -mx-2">
                 <div className="flex space-x-3 px-2">
