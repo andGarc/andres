@@ -81,19 +81,21 @@ export default function Portfolio() {
                   </Link>
                 </Button>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {projects.map((project, i) => (
-                  <div
-                    key={i}
-                    className="relative bg-gray-900 rounded-lg p-2 aspect-[5/4] flex flex-col justify-end hover:scale-105 transition-transform cursor-pointer"
-                    onClick={() => openProjectModal(project)}
-                  >
-                    <div className="text-right">
-                      <h3 className="text-white font-bold text-base">{project.title}</h3>
-                      <p className="text-blue-400 text-xs">{project.subtitle}</p>
+              <div className="relative overflow-x-auto pb-4 -mx-2">
+                <div className="flex space-x-3 px-2">
+                  {projects.map((project, i) => (
+                    <div
+                      key={i}
+                      className="relative bg-gray-900 rounded-lg p-2 aspect-[5/4] flex flex-col justify-end hover:scale-105 transition-transform cursor-pointer min-w-[160px] sm:min-w-[180px] flex-shrink-0"
+                      onClick={() => openProjectModal(project)}
+                    >
+                      <div className="text-right">
+                        <h3 className="text-white font-bold text-base">{project.title}</h3>
+                        <p className="text-blue-400 text-xs">{project.subtitle}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </section>
 
