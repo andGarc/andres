@@ -72,8 +72,8 @@ export default function Portfolio() {
           {/* Right Content */}
           <main className="flex flex-col space-y-8">
             {/* Projects Section */}
-            <section className="sm:px-2">
-              <div className="flex justify-between items-center mb-4">
+            <section className="bg-gray-900 rounded-xl p-4">
+              <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl md:text-2xl font-mono">My Projects</h2>
                 <Button variant="ghost" size="icon" asChild>
                   <Link href="#">
@@ -86,11 +86,11 @@ export default function Portfolio() {
                   {projects.map((project, i) => (
                     <div
                       key={i}
-                      className="relative bg-gray-900 rounded-lg p-2 aspect-[5/4] flex flex-col justify-end hover:scale-105 transition-transform cursor-pointer min-w-[160px] sm:min-w-[180px] flex-shrink-0"
+                      className="relative bg-black rounded-lg p-3 h-20 flex flex-col justify-end hover:scale-105 transition-transform cursor-pointer min-w-[160px] sm:min-w-[180px] flex-shrink-0"
                       onClick={() => openProjectModal(project)}
                     >
                       <div className="text-right">
-                        <h3 className="text-white font-bold text-base">{project.title}</h3>
+                        <h3 className="text-white font-bold text-sm">{project.title}</h3>
                         <p className="text-blue-400 text-xs">{project.subtitle}</p>
                       </div>
                     </div>
