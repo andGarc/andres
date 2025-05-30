@@ -28,7 +28,7 @@ export default function Portfolio() {
           <aside className="flex flex-col space-y-6 md:space-y-8">
             {/* Profile Header */}
             <div className="flex items-center gap-4">
-              <Image src="/vercel.svg" alt="Profile" width={60} height={60} className="rounded-full" />
+              <Image src="/profile.png" alt="Profile" width={60} height={60} className="rounded-full" />
               <div>
                 <h1 className="text-2xl font-mono">ANDRES G.</h1>
                 {/* <p className="text-gray-400 text-sm">Data Scientist // Developer</p> */}
