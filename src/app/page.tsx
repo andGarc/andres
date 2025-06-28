@@ -54,11 +54,6 @@ export default function Portfolio() {
                   <Linkedin className="w-5 h-5" />
                 </Link>
               </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link href="https://github.com/andGarc">
-                  <Github className="w-5 h-5" />
-                </Link>
-              </Button>
             </div>
 
             <div className="flex-grow" />
