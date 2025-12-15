@@ -121,12 +121,12 @@ export default function Home() {
                 </li>
                 <li>
                   <Link
-                    href="https://example.com/newsletter"
+                    href="https://makerworld.com/en/@usr_andresito"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block p-4 border border-gray-800 rounded-lg hover:bg-gray-900 transition-colors"
                   >
-                    <h3 className="font-medium">🌱 Digital Garden</h3>
+                    <h3 className="font-medium">🌱 Maker World Profile</h3>
                     <p className="text-sm text-gray-400 mt-1">
                       
                     </p>
