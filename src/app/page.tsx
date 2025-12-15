@@ -126,7 +126,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="block p-4 border border-gray-800 rounded-lg hover:bg-gray-900 transition-colors"
                   >
-                    <h3 className="font-medium">🌱 Maker World Profile</h3>
+                    <h3 className="font-medium">🌱 MakerWorld Profile</h3>
                     <p className="text-sm text-gray-400 mt-1">
                       
                     </p>
