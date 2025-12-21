@@ -181,7 +181,7 @@ export function KayakingDashboard({ data }: KayakingDashboardProps) {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <p className="text-xs text-gray-400 uppercase">Date</p>
-              <p className="text-white font-medium">{new Date(latestEntry.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
+              <p className="text-white font-medium">{new Date(latestEntry.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
             </div>
             <div>
               <p className="text-xs text-gray-400 uppercase">River</p>
