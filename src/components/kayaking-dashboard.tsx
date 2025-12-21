@@ -28,6 +28,7 @@ export function KayakingDashboard({ data }: KayakingDashboardProps) {
   const [riverStats, setRiverStats] = useState<Record<string, number>>({})
   const [monthlyTotals, setMonthlyTotals] = useState<number[]>([])
   const [isClient, setIsClient] = useState(false)
+  const [latestEntry, setLatestEntry] = useState<KayakingData | null>(null)
 
   useEffect(() => setIsClient(true), [])
 
@@ -45,6 +46,10 @@ export function KayakingDashboard({ data }: KayakingDashboardProps) {
 
     const filtered = selectedYear === "All" ? data : data.filter(d => new Date(d.date).getFullYear().toString() === selectedYear)
     setTotalDays(filtered.length)
+
+    // Get latest entry from all data
+    const sortedByDate = [...data].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    setLatestEntry(sortedByDate[0] || null)
 
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -169,6 +174,32 @@ export function KayakingDashboard({ data }: KayakingDashboardProps) {
           </div>
         ))}
       </div>
+
+      {latestEntry && (
+        <div className="bg-[#1e2640] p-4 rounded-lg border border-blue-500/30">
+          <h3 className="text-lg font-semibold mb-3 text-blue-400">Latest Day on the Water</h3>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <p className="text-xs text-gray-400 uppercase">Date</p>
+              <p className="text-white font-medium">{new Date(latestEntry.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-400 uppercase">River</p>
+              <p className="text-white font-medium">{latestEntry.river}</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-400 uppercase">Level</p>
+              <p className="text-white font-medium">{latestEntry.level} {latestEntry.level_type}</p>
+            </div>
+            {latestEntry.notes && (
+              <div className="col-span-2">
+                <p className="text-xs text-gray-400 uppercase">Notes</p>
+                <p className="text-white">{latestEntry.notes}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
